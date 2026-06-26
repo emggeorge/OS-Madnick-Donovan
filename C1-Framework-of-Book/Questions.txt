@@ -1,0 +1,19 @@
+1-1 What is the difference between the following?
+    1  process and processor
+    2 user, job, process
+
+A1:
+    process: "A process (or task) is a computation that may be done concurrently with other computations." (pg 5)
+    processor: "A processor is a hardware device capable of inerpreting instructions and performing the indicated operation (e.g. addition)." (pg 4)
+    difference: A process is a verb and a processor is a noun. The processor is a physical piece of hardware, while the process is an action that is made. These two are related by the fact that a processor is the object that executes a process.
+
+A2:
+    user:
+    job:
+    process:
+
+-------------------------------------------------------------
+1-2 List two advantages of multiprogramming.
+
+A:
+-------------------------------------------------------------
