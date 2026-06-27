@@ -15,5 +15,8 @@ A2:
 -------------------------------------------------------------
 1-2 List two advantages of multiprogramming.
 
-A:
+A: 
+    "Multiprogramming is a term given to a system that may have several processes in "states of execution" at the same time" (pg 7)
+
+    This is an advantage because 1) multiprogramming allows for a system to execute many process in parallel and 2) 
 -------------------------------------------------------------
