@@ -1,5 +1,5 @@
 1-1 What is the difference between the following?
-    1  process and processor
+    1 process and processor
     2 user, job, process
 
 A1:
@@ -8,9 +8,10 @@ A1:
     difference: A process is a verb and a processor is a noun. The processor is a physical piece of hardware, while the process is an action that is made. These two are related by the fact that a processor is the object that executes a process.
 
 A2:
-    user:
-    job:
-    process:
+    user: The thing creating the task at hand. It decides what needs to be done and how they want it done. "A user submits his job to the operating system. A user is anybody that desires work to be done by a computer system." (pg 5)
+    job: The overarching thing that the user wants to create. "A job is the collection of activities needed to do the work required. A job may be divided into several steps (job steps)." (pg 5)
+    process: An individual step towards performing the job. "A process (or task) is a computation that may be done concurrently with other computations." (pg 5)
+    difference: The difference between these three things is how they are related. A user is the creator, the job is their creation, and a process is how they create it by way of individual computations.
 
 -------------------------------------------------------------
 1-2 List two advantages of multiprogramming.
@@ -18,5 +19,34 @@ A2:
 A: 
     "Multiprogramming is a term given to a system that may have several processes in "states of execution" at the same time" (pg 7)
 
-    This is an advantage because 1) multiprogramming allows for a system to execute many process in parallel and 2) 
+    This is an advantage because 1) multiprogramming allows for a system to execute many process in parallel and 2) potentially save time by not waiting for each previous task to finish. (I know that is really just one advantage, but I'm having trouble thinking of anything where the end effect is time saved).
 -------------------------------------------------------------
+1-3 One may make the following analogy:
+    Boss is comparable to CPU
+    Secretary is comparable to I/O channel
+    Typewriter is comparable to I/O device
+
+    1 State how a boss, secretary, and typwriter communicate with each other
+      (e.g., boss with his secretary).
+    2 How is each scheduled? Consider priorities, preemption, and interruption and which can be interupted by whom (e.g., who can interrupt the boss?).
+    3 Repeat 1 and 2 for the group: CPU, I/O channel, I/O device
+
+A1:
+    boss + secretary: boss verbally speaks with his secretary, where the boss is dictating directions or the secretary is sharing information on the day that she has managed for him
+    secretary + typewriter: the secretary uses her fingers to press on the typewriter and the typewriter responds by producing a page with the information she set out to make
+    boss + typewriter: boss never interacts with the typewriter directly, but recieves its output.
+
+A2:
+    (forgive my misogyny in the following)
+    A boss will dictate his priorities to the secretary who will then create her own priorities that enable her to efficiently use the typewriter to finish her tasks. The typewriter will never dictate a priority other than in a malfunction, and then is dictating a priority in a way because it is not responding as expected. Sometimes, if a secretary has information that the boss does not, she will provide input.
+
+    A secretary can preempt the boss's tasks by completing things she know he likes finished often before he asks. A typwriter preemts the secretary's needs when is automatically dings at the end of a page to notify finishing (I think?).
+
+    A typewriter will never interrupt a secretary except in cases of malfunction. A boss may interrupt the secretary if there is something he needs before she is finished typing. A secretary may interrupt the boss if there is an issue with the task he has asked for.
+
+A3:
+    CPU + I/O channel: "the CPU may execute a START I/O (SIO) instruction to initiate an I/O processor." (pg 4) The CPU communicates with the I/O channel through start up tasks or end tasks.
+    I/O channel + I/O device: "the I/O (Input and Output) processors are designed to control I/O devices and handle the movement of data between the memory and the I/O devices." (pg 4). The I/O channel is the one that dictates to the I/O device what to do.
+    CPU + I/O device: These do not communicate directly except in the case where an I/O channel would be lacking or an I/O device has sent a response through the I/O channel back to the CPU.
+
+    A CPU dictates priorities to the I/O channel which then dictates to the I/O device its priorities to finish the task. Both the I/O channel and the I/O device may preempt tasks that the one above it may ask for. Again moving up the chain is how error interruptions would be communicated, and down the chain would be how stop commands are communicated.
