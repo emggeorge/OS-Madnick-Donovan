@@ -50,3 +50,34 @@ A3:
     CPU + I/O device: These do not communicate directly except in the case where an I/O channel would be lacking or an I/O device has sent a response through the I/O channel back to the CPU.
 
     A CPU dictates priorities to the I/O channel which then dictates to the I/O device its priorities to finish the task. Both the I/O channel and the I/O device may preempt tasks that the one above it may ask for. Again moving up the chain is how error interruptions would be communicated, and down the chain would be how stop commands are communicated.
+-------------------------------------------------------------
+1-4 Divide all the following instructions into privileged and nonprivileged. For each instruction state your reasons.
+    1 Set tape drive on fire.
+    2 Raise pi to the 'x' power.
+    3 Stop CPU.
+    4 Read the clock.
+    5 Clear memory.
+    6 Disable all interrupts (masking).
+    7 Change value of instruction address register.
+
+A:
+    "Another feature found in most contemporary computer systems is special hardware and instructions used by the operating system. These instructions, which are usually not available to the ordinary user, are commonly called priveleged instructions." (pg 7)
+
+    privileged:
+        1 Set tape drive on fire.
+            I had to look this up and it does seem like this is a real computing term, not just the action of angrily setting fire to a tape drive because you're annoyed (https://en.wikipedia.org/wiki/Halt_and_Catch_Fire_(computing)). It sounds like this would be a function where the CPU can decide to quit and burn everything. It is possible though that this is a joke.
+        6 Disable all interrupts (masking).
+            If an interrupt may not be relevant for a task, or could be ignored without serious issue, there can be hardware to override this.
+        7 Change value of instruction address register.
+            I'm not 100% sure what this means in 80s terms either, but I'm assuming it is the process of moving over where one piece of code sits in memory to another? Which sounds like something that would happen in a higher state, rather than just by any user.
+    nonprivileged:
+        2 Raise pi to the 'x' power.
+            This is a normal task that anyone could do on any computer.
+        4 Stop CPU.
+            It is normal to need to interrupt a program. Any user can see that a process is going awry and stop it from running.
+        4 Read the clock.
+            This is also a normal task that does not require special permission.
+        5 Clear memory
+            This is also normal, but I am assuming that it doesn't include any memory that may be set aside by the system for special purposes. In that case, it would be a privileged instruction to clear out the set aside memory.
+-------------------------------------------------------------
+1-5 
