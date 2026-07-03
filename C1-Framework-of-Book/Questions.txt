@@ -80,4 +80,34 @@ A:
         5 Clear memory
             This is also normal, but I am assuming that it doesn't include any memory that may be set aside by the system for special purposes. In that case, it would be a privileged instruction to clear out the set aside memory.
 -------------------------------------------------------------
-1-5 
+1-5 Assume that you are head of the check-sorting division of a bank, which processes 50,000 checks a day for its 99,999 customers. That is, 50,000 checks are distributed among 99,999 bins.
+
+Two sorting methods are proposed.
+    1 Linear -- the bins are lined up in a row. A person takes about 99,999/10 seconds (about 1000 seconds) to find the right bin and deposit the check in it.
+    2 Bucket sort -- 11,110 intermediary bins are used. Based on first digit of check, he places it in one of the ten bins. After all the checks have been so processed, he goes to one of these bins and processes each check into other bins based upon the second digit, etc. Processing such check action takes about 10/10 = 1 second.
+
+    a How long would it take to process all the checks using methods 1 and 2?
+    b Using method 2, which steps could be done in parallel (as separate processes)? That is, how many people could be used?
+    c If parallel processing were used in method 2, how long would it take to sort all the checks?
+
+Aa:
+    Linear sort: 50,000 checks * 1000s/check = 50,000,000 seconds to process all the checks, or ~580 days
+    Bucket sort: 50,000 checks * 1s/check = 50,000 seconds to process all the checks, or ~0.6 days
+
+Ab:
+    A person can stand at each group of sub-bins so that a person only needs to check one digit and place it in the correct bin.
+
+    In this case, there are 11,110 bins. 10 bins for the first set of digits, 10 bins for each digit of the previous set, so 100 bins, 1000 bins in the next level (10 bins for each of the 100 bins) and 10000 bins at the final, adding up to 11,110 bins.
+
+    If there is a person at each set of bins, the first level would have 1 person for the set of 10 bins, the next level would have 10 people for each sub bin, the third would have 100, and the fourth would have 1000.
+
+    This comes out to mean there are 1111 people who can be working in parallel to sort the checks.
+
+Ac:
+    If sorting one check through all 4 layers of sub bins takes 1 second, then it can be assumed that each layer of sorting takes 0.25 seconds. Sorting in parallel means that the limits on time are only how long it takes the first person to process all the check, and then how long it takes that final check to be fully processed to the end.
+
+    It would take the first person 50,000 checks * 0.25 s/check = 12,500 seconds
+    The final check takes one second to fully process, so we add the final 0.75s to send it through the 3 remaining bins the total.
+    That makes 12,500.75 seconds to process all the checks, or ~3.5 hours.
+
+    This does assume that every check can be fully parallelized, which may not be 100% accurate if two checks need to go to the same sub-bin in less than the amount of time that it takes to process the previous check. I think that the difference would be negligible, though.
