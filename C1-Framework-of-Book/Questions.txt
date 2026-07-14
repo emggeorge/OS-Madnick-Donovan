@@ -14,13 +14,16 @@ A2:
     difference: The difference between these three things is how they are related. A user is the creator, the job is their creation, and a process is how they create it by way of individual computations.
 
 -------------------------------------------------------------
+
 1-2 List two advantages of multiprogramming.
 
 A: 
     "Multiprogramming is a term given to a system that may have several processes in "states of execution" at the same time" (pg 7)
 
     This is an advantage because 1) multiprogramming allows for a system to execute many process in parallel and 2) potentially save time by not waiting for each previous task to finish. (I know that is really just one advantage, but I'm having trouble thinking of anything where the end effect is time saved).
+
 -------------------------------------------------------------
+
 1-3 One may make the following analogy:
     Boss is comparable to CPU
     Secretary is comparable to I/O channel
@@ -50,7 +53,9 @@ A3:
     CPU + I/O device: These do not communicate directly except in the case where an I/O channel would be lacking or an I/O device has sent a response through the I/O channel back to the CPU.
 
     A CPU dictates priorities to the I/O channel which then dictates to the I/O device its priorities to finish the task. Both the I/O channel and the I/O device may preempt tasks that the one above it may ask for. Again moving up the chain is how error interruptions would be communicated, and down the chain would be how stop commands are communicated.
+
 -------------------------------------------------------------
+
 1-4 Divide all the following instructions into privileged and nonprivileged. For each instruction state your reasons.
     1 Set tape drive on fire.
     2 Raise pi to the 'x' power.
@@ -79,7 +84,9 @@ A:
             This is also a normal task that does not require special permission.
         5 Clear memory
             This is also normal, but I am assuming that it doesn't include any memory that may be set aside by the system for special purposes. In that case, it would be a privileged instruction to clear out the set aside memory.
+
 -------------------------------------------------------------
+
 1-5 Assume that you are head of the check-sorting division of a bank, which processes 50,000 checks a day for its 99,999 customers. That is, 50,000 checks are distributed among 99,999 bins.
 
 Two sorting methods are proposed.
@@ -111,3 +118,43 @@ Ac:
     That makes 12,500.75 seconds to process all the checks, or ~3.5 hours.
 
     This does assume that every check can be fully parallelized, which may not be 100% accurate if two checks need to go to the same sub-bin in less than the amount of time that it takes to process the previous check. I think that the difference would be negligible, though.
+
+-------------------------------------------------------------
+
+    1-6 We make an analogy between a warehouse with many shelves and a memory with many locations. Assume a large number of items have arrived and will continue to arrive. The task of the warehouse manager (memory manager) is to store these items on the shelves.
+        Give an example of how the four memory manager functions of Section 1-3 are performed; for example,
+        1 How does the manager keep track of space?
+        2 If the loading dock has many items on it, how does the manager decide which item to store first?
+        3 How are shelves allocated?
+        4 What does the manager do when one item is removed from the shelves?
+
+    A:
+        Memory manager: A memory manager keeps track of space by keeping a log of what is in memory and how much is left. When an item arrives for its shelves, it checks if there is enough space for the item and places it in the most logical place for it.
+
+        Processor manager: A processor manager must know how many resources each job will take, both time and memory, and never start a process without ensuring there will be enough of the resources. In this analogy, it will monitor how long it would take to unload a truck or organize a shelf, and only book these tasks when it is possible to do so.
+
+        Device manager: A device manager would be like an equipment manager in the warehouse. It would keep track of things like forklifts, safety equipment, and loading docks. It converts an item into a form ready for the warehouse and decides who must take each item.
+
+        Information manager: An information manager would know everything about the inventory. It decides if something can be removed from the shelves or if it can go back.
+
+-------------------------------------------------------------
+
+    1-7 We can make an analogy between managing a restaurant and managing processors when the following are analogous.
+        Cook--processor
+        Maitre d' (cook's boss)--processor manager
+        Customers' orders--processes--they are all demanding processing, e.g. they want their meal.
+        Customers--users
+        Give an example of how the four processor manager functions of Section 1-4 are performed, e.g., how does the boss keep track of resources--the processors and processes, etc.?
+
+    A:
+        I'm having trouble finding four specific processor management functions in Section 1-4, so I'm going to use the functions in section 1-3.2 to answer this question and then use the framing of 1-4.
+
+        Traffic controller: The boss accepts meal tickets and formats them so that a cook can make them. For example, a customer could want a hamburger, so the boss will determine what kind of patties need to be used and how long they need to be cooked.
+
+        Process scheduler: This keeps track of how long the process will take, signals when to start, and stops the process if it is taking too long. This is similar to a boss training cooks to a certain recip.
+
+        Dispatcher: The boss goes out to set up each work station so there are enough cooking utensils at any time a cook needs. He would also designate who is working on what, whether cutting, grilling, etc.
+
+        Reclaimer: When the customers are done eating, the boss signals clean up and then sends everyone home.
+
+-------------------------------------------------------------
