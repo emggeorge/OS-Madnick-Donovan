@@ -118,7 +118,8 @@ Ac:
     That makes 12,500.75 seconds to process all the checks, or ~3.5 hours.
 
     This does assume that every check can be fully parallelized, which may not be 100% accurate if two checks need to go to the same sub-bin in less than the amount of time that it takes to process the previous check. I think that the difference would be negligible, though.
-
+-------------------------------------------------------------
+The following four questions deal with analogies for the different frameworks for viewing an operating system (memory manager, process manager, device manager, information manager). This took me a little while to wrap my head around, so I would suggest reading all four questions and putting together the answers as one set rather than trying to tackle one at a time.
 -------------------------------------------------------------
 
     1-6 We make an analogy between a warehouse with many shelves and a memory with many locations. Assume a large number of items have arrived and will continue to arrive. The task of the warehouse manager (memory manager) is to store these items on the shelves.
@@ -129,13 +130,13 @@ Ac:
         4 What does the manager do when one item is removed from the shelves?
 
     A:
-        Memory manager: A memory manager keeps track of space by keeping a log of what is in memory and how much is left. When an item arrives for its shelves, it checks if there is enough space for the item and places it in the most logical place for it.
+        Function 1, keep track of resource: keep an inventory count of what is open and used. You can also visually see which shelves are open, which in a computer could look like tags at the start and end of each memory address.
 
-        Processor manager: A processor manager must know how many resources each job will take, both time and memory, and never start a process without ensuring there will be enough of the resources. In this analogy, it will monitor how long it would take to unload a truck or organize a shelf, and only book these tasks when it is possible to do so.
+        Function 2, decide which process gets memory: store inventory that will go out again soon at the front and inventory that will be there for a while in the back.
 
-        Device manager: A device manager would be like an equipment manager in the warehouse. It would keep track of things like forklifts, safety equipment, and loading docks. It converts an item into a form ready for the warehouse and decides who must take each item.
+        Function 3, allocate the resource: place the inventory on the shelves. Make a note in the inventory tracker that this is where an item has gone.
 
-        Information manager: An information manager would know everything about the inventory. It decides if something can be removed from the shelves or if it can go back.
+        Function 4, reclaim the resource: send out the inventory, cross out the note in the inventory tracker.
 
 -------------------------------------------------------------
 
@@ -147,14 +148,54 @@ Ac:
         Give an example of how the four processor manager functions of Section 1-4 are performed, e.g., how does the boss keep track of resources--the processors and processes, etc.?
 
     A:
-        I'm having trouble finding four specific processor management functions in Section 1-4, so I'm going to use the functions in section 1-3.2 to answer this question and then use the framing of 1-4.
+        I'm having trouble finding four specific processor management functions in Section 1-4, so I'm going to use the functions in section 1-3.2.
 
-        Traffic controller: The boss accepts meal tickets and formats them so that a cook can make them. For example, a customer could want a hamburger, so the boss will determine what kind of patties need to be used and how long they need to be cooked.
+        Function 1, keep track of the resource: The boss should know who is on shift that day and what their skills are.
 
-        Process scheduler: This keeps track of how long the process will take, signals when to start, and stops the process if it is taking too long. This is similar to a boss training cooks to a certain recip.
+        Function 2, who will use the processor: take in tickets as the customers make requests. If a customer is angry, maybe speed up the job.
 
-        Dispatcher: The boss goes out to set up each work station so there are enough cooking utensils at any time a cook needs. He would also designate who is working on what, whether cutting, grilling, etc.
+        Function 3, allocate the resource: send the cooks to their station and get the started.
 
-        Reclaimer: When the customers are done eating, the boss signals clean up and then sends everyone home.
+        Function 4, deallocate the resource: send out the meal when it is finished.
 
 -------------------------------------------------------------
+
+    1-8 We can make an analogy between managing a post office and managing devices where the mail trucks are devices and the letters are the I/O request. (Note: the post office does not decide where your letters go or just how they get there.)
+    
+    Give an example of how the four device management functions of Section 1-3.3 are performed for the post office. Be sure to consider the following in function 2. If one letter arrives, do you assign it a truck and send the truck away (fast deliver for that letter, but you could run out of trucks) or do you wait until the truck is full (efficient use of device but slow delivery, e.g., a truck to Lynn, Mass may take a year to fill)? Thus, discuss the tradeoff between fast response (sending the letter on the first truck) and good utilization (wait until the truck is full).
+
+    A:
+        Function 1, keep track of resource: A post office accepts letters of all shapes and sizes, but is ultimately always able to find the label on the resource
+
+        Function 2, decide most efficient way to allocate resource: This would be the truck question. Ultimately, everything needs to go where it wants to go, so waiting for a truck to fill up indefinitely could risk leaving the letters at the post office forever. It would be better to have a time limit on each truck, so for a day the slow shipping option is used, but at night all remaining trucks should go out in the fast way. Programs could specific expidited or slow depending on the importance of the letter.
+
+        Function 3, allocate the resource: Once the post office knows which truck to put it in, it should send it that way and prepare the truck for either its max letter limit or max time, or both.
+
+        Fuction 4, reclaim the resource: Automatically once a truck leaves, the letter is no longer a concern.
+
+-------------------------------------------------------------
+
+    1-9 We make an analogy between a librarian and an information manager. Given an example of how the four information management functions of Section 1-3 are performed for a library.
+
+    A:
+        Function 1, keep track of resource: libraries have call cards that list all the books. You can quickly search through cards to find a call number, or wander through shelves and hope you land on something interesting.
+
+        Function 2, decide who gets use: A library may restrict access to certain sections based on age or membership level. Only after credentials are checked may a person enter this restricted area and view the collection. Sometimes the call cards are available outside the section, but other times you may need to enter the section to get an idea of the archive.
+
+        Function 3, allocate the resource: check out a book, or at least remove a book to read at the desk.
+
+        Function 4, deallocate the resource: return a book and place back on the shelf.
+
+-------------------------------------------------------------
+
+    1-10 We can make a process state model of you.
+        (see book for diagram)
+    Where you have two states, asleep or working, wo make the transition from the working state to the asleep state when you are tired.
+    1 Add three more states, e.g., eating.
+    2 Indicate all possible transitions between the five states.
+
+    A:
+        Three new states: cuddling asha, eating, biking
+
+        Full transistion cycle:
+        sleeping ----alarm clock----> cuddling asha ----stomach growl----> eating ----time to leave (clock?)----> biking ----end of path---> working -----tired----> biking (home) ----end of path----> eating ----tired----> sleeping
