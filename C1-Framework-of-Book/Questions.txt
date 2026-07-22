@@ -199,3 +199,29 @@ The following four questions deal with analogies for the different frameworks fo
 
         Full transistion cycle:
         sleeping ----alarm clock----> cuddling asha ----stomach growl----> eating ----time to leave (clock?)----> biking ----end of path---> working -----tired----> biking (home) ----end of path----> eating ----tired----> sleeping
+
+-------------------------------------------------------------
+
+    1-11 One technique or view found useful in the structured programming or hierarchical view (our third view is in Section 1-5.2). Let us explore the advantages of this view for building an operating system by the analogy of a carpenter building a house. His basic parts involved are nails, glass, cement, putty, and wood.
+    1 What are the disadvantages for a carpenter who uses only very basic parts, e.g., nothing preassembled?
+    2 Alternatively, a carpenter could use higher level primitives, e.g., window assemblies. List such primitives.
+      What are some advantages to this view?
+    3 Order the extended primitives of 2, e.g., if a large assembly uses a smaller on then the larger one is above the smaller (a door assembly may include a window assembly).
+
+    A:
+        1 Having nothing preassembled would take longer because the labor must be performed on site. It may also be difficult because a carpenter has specific skills that may not translate to every element of the house. Either the carpenter would need to train longer, or more people would be required to construct the house.
+
+        2 Primitives:
+            - window assembly
+            - premade cabinets
+            - door frame assembly
+            - premade trim
+            - premade doors
+        This is helpful because teh carpenter can install them right as they come in, not needing to spend the time to make each one. They also would allow more specialized workers to make each piece which solves the problem of skills.
+
+        3 Order, from innermost to outermost:
+            - premade trim (used in every piece if needed)
+            - premade cabinets (I'm imagining the frames of the cabinets could be used as a basis for everything else)
+            - premade door (could be its own, or could use parts from the cabinets)
+            - door frame assembly 
+            - window assmbly (small, unique to the size, could use other elements to make it up)
